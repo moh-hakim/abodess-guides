@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>71a Oakley Square (Basement) — Guest Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../assets/logo5.jpg">
+</head>
+<body>
+
+<header class="app-header">
+  <img src="../assets/logo5.jpg" alt="Abodess" class="logo">
+  <div class="prop-title">
+    <div class="label">Your Guest Guide</div>
+    <div class="name">71a Oakley Square — Basement</div>
+  </div>
+</header>
+
+<div class="app-body">
+
+  <!-- ═══════════ WELCOME ═══════════ -->
+  <section class="tab-panel" data-tab="welcome">
+
+    <div class="hero-wrap">
+      <img src="hero.jpg" alt="71a Oakley Square Basement">
+      <div class="hero-overlay">
+        <h1>Welcome to Oakley Square</h1>
+        <p class="hero-sub">71a Oakley Square, London NW1 1NH</p>
+      </div>
+    </div>
+
+    <div class="welcome-notice">
+      <span class="icon">🔒</span>
+      <div>Your <strong>access code</strong> will be sent to you 3 hours before arrival via your booking message. It is not included in this guide.</div>
+    </div>
+
+    <div class="quick-info">
+      <div class="quick-card">
+        <div class="qc-icon">🕐</div>
+        <div><div class="qc-label">Check-in</div><div class="qc-value">From 3:00 PM</div></div>
+      </div>
+      <div class="quick-card">
+        <div class="qc-icon">🚪</div>
+        <div><div class="qc-label">Check-out</div><div class="qc-value">By 11:00 AM</div></div>
+      </div>
+    </div>
+
+    <p class="section-heading">Your Guide</p>
+    <div class="shortcut-grid">
+      <button class="shortcut-tile" data-goto="checkin">
+        <div class="st-icon">🔑</div><span class="st-label">Check-in</span>
+      </button>
+      <button class="shortcut-tile" data-goto="house">
+        <div class="st-icon">🏡</div><span class="st-label">House Info</span>
+      </button>
+      <button class="shortcut-tile" data-goto="local">
+        <div class="st-icon">📍</div><span class="st-label">Local Area</span>
+      </button>
+    </div>
+
+    <!-- Host card -->
+    <p class="section-heading">Your Host</p>
+    <div class="content-pad">
+      <div class="host-card">
+        <div class="host-avatar">A</div>
+        <div class="host-info">
+          <div class="host-name">Adam</div>
+          <div class="host-detail">WhatsApp: 0203 488 4259</div>
+          <div class="host-detail">Phone: 0737 913 0361</div>
+        </div>
+        <a class="host-msg" href="https://wa.me/442034884259" target="_blank" rel="noopener">Message</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════ CHECK-IN ═══════════ -->
+  <section class="tab-panel" data-tab="checkin">
+
+    <p class="section-heading">Your Access Code</p>
+    <div class="content-pad">
+      <div class="code-reveal" id="codeReveal">
+
+        <!-- State 1: no code in URL -->
+        <div id="crNoCode">
+          <div class="cr-icon">🔒</div>
+          <div class="cr-title">Lockbox Code</div>
+          <div class="cr-msg">Your code will be sent via your booking message 3 hours before check-in.</div>
+        </div>
+
+        <!-- State 2: too early — countdown -->
+        <div id="crCountdown" class="hidden">
+          <div class="cr-icon">⏳</div>
+          <div class="cr-title">Code unlocks in</div>
+          <div class="cr-timer" id="crTimer">--:--:--</div>
+          <div class="cr-msg">Available from 12:00 PM on check-in day</div>
+        </div>
+
+        <!-- State 3: revealed -->
+        <div id="crUnlocked" class="hidden">
+          <div class="cr-icon">🔓</div>
+          <div class="cr-title">Your Lockbox Code</div>
+          <div class="cr-code" id="crCode">----</div>
+          <button class="cr-copy" id="crCopy" onclick="navigator.clipboard.writeText(document.getElementById('crCode').textContent)">📋 Copy Code</button>
+          <div class="cr-msg" style="margin-top:10px;">Enter this code on the lockbox at the front door</div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="section-heading">Arriving at the Property</p>
+    <div class="content-pad">
+      <div class="steps-card">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Find the lockbox</div>
+            <p>The flat is the <strong>basement apartment</strong> at 71a Oakley Square. Head down the steps to the basement entrance.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Enter your code</div>
+            <p>Your access code will be sent to you <strong>3 hours before arrival</strong> via your booking platform message. Enter the code to retrieve the key.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Enter the flat</div>
+            <p>Use the key to open the front door and make yourself at home in your 2-bedroom flat!</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Need help?</div>
+            <p>If you haven't received the code or have trouble accessing the property, call Adam on <strong>0737 913 0361</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lockbox photo -->
+    <p class="section-heading">Lockbox Location</p>
+    <div class="content-pad">
+      <img src="lockbox/5.jpg" alt="Lockbox Location" style="width:100%;border-radius:8px;">
+      <p style="margin-top:12px;color:#666;">Find the lockbox at the building entrance (photo 5 in the guide below).</p>
+    </div>
+
+    <!-- Lockbox photos -->
+    <p class="section-heading">Check-in Guide</p>
+    <div class="content-pad">
+      <p style="margin-bottom:12px;color:#666;">Follow these photos to find the lockbox.</p>
+      <div class="carousel-wrap">
+        <div class="carousel">
+          <div class="carousel-track">
+            <img src="lockbox/1.jpg"  alt="Page 1"  loading="eager">
+            <img src="lockbox/2.jpg"  alt="Page 2"  loading="lazy">
+            <img src="lockbox/3.jpg"  alt="Page 3"  loading="lazy">
+            <img src="lockbox/4.jpg"  alt="Page 4"  loading="lazy">
+            <img src="lockbox/5.jpg"  alt="Page 5"  loading="lazy">
+            <img src="lockbox/6.jpg"  alt="Page 6"  loading="lazy">
+            <img src="lockbox/7.jpg"  alt="Page 7"  loading="lazy">
+            <img src="lockbox/8.jpg"  alt="Page 8"  loading="lazy">
+            <img src="lockbox/9.jpg"  alt="Page 9"  loading="lazy">
+            <img src="lockbox/10.jpg" alt="Page 10" loading="lazy">
+            <img src="lockbox/11.jpg" alt="Page 11" loading="lazy">
+            <img src="lockbox/12.jpg" alt="Page 12" loading="lazy">
+            <img src="lockbox/13.jpg" alt="Page 13" loading="lazy">
+            <img src="lockbox/14.jpg" alt="Page 14" loading="lazy">
+            <img src="lockbox/15.jpg" alt="Page 15" loading="lazy">
+          </div>
+          <button class="carousel-btn prev">‹</button>
+          <button class="carousel-btn next">›</button>
+          <div class="carousel-footer">
+            <div class="dot-strip">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <span class="page-indicator">1 / 15</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WiFi -->
+    <p class="section-heading">WiFi</p>
+    <div class="content-pad">
+      <div class="info-block">
+        <div class="ib-row">
+          <span class="ib-icon">📶</span>
+          <div>
+            <div class="ib-label">Network</div>
+            <div class="ib-value">Abodess NW1</div>
+          </div>
+        </div>
+        <div class="ib-divider"></div>
+        <div class="ib-row">
+          <span class="ib-icon">🔑</span>
+          <div>
+            <div class="ib-label">Password</div>
+            <div class="ib-value mono">reviewplease5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo Guide -->
+    <p class="section-heading">Property Photo Guide</p>
+    <div class="content-pad">
+      <div class="carousel-wrap">
+        <div class="carousel">
+          <div class="carousel-track">
+            <img src="images/1.jpg"  alt="Page 1"  loading="eager">
+            <img src="images/2.jpg"  alt="Page 2"  loading="lazy">
+            <img src="images/3.jpg"  alt="Page 3"  loading="lazy">
+            <img src="images/4.jpg"  alt="Page 4"  loading="lazy">
+            <img src="images/5.jpg"  alt="Page 5"  loading="lazy">
+            <img src="images/6.jpg"  alt="Page 6"  loading="lazy">
+            <img src="images/7.jpg"  alt="Page 7"  loading="lazy">
+            <img src="images/8.jpg"  alt="Page 8"  loading="lazy">
+            <img src="images/9.jpg"  alt="Page 9"  loading="lazy">
+            <img src="images/10.jpg" alt="Page 10" loading="lazy">
+            <img src="images/11.jpg" alt="Page 11" loading="lazy">
+            <img src="images/12.jpg" alt="Page 12" loading="lazy">
+            <img src="images/13.jpg" alt="Page 13" loading="lazy">
+            <img src="images/14.jpg" alt="Page 14" loading="lazy">
+            <img src="images/15.jpg" alt="Page 15" loading="lazy">
+          </div>
+          <button class="carousel-btn prev">&#8249;</button>
+          <button class="carousel-btn next">&#8250;</button>
+          <div class="carousel-footer">
+            <div class="dot-strip">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+            <span class="page-indicator">1 / 15</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Check-out reminder -->
+    <p class="section-heading">Check-out — By 11:00 AM</p>
+    <div class="content-pad">
+      <div class="checklist-card">
+        <div class="check-item"><span class="check-icon">🛏️</span><span>Strip the beds and leave linen on top</span></div>
+        <div class="check-item"><span class="check-icon">🛁</span><span>Leave used towels in the bathtub</span></div>
+        <div class="check-item"><span class="check-icon">🔌</span><span>Turn off heating and all appliances</span></div>
+        <div class="check-item"><span class="check-icon">🔒</span><span>Return key to the lockbox and cover the code</span></div>
+        <div class="check-item"><span class="check-icon">🪟</span><span>Close and lock all windows and doors</span></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════ HOUSE INFO ═══════════ -->
+  <section class="tab-panel" data-tab="house">
+
+    <!-- Heating -->
+    <p class="section-heading">Heating</p>
+    <div class="content-pad">
+      <div class="info-block">
+        <div class="ib-row">
+          <span class="ib-icon">🌡️</span>
+          <div>
+            <div class="ib-label">Thermostat</div>
+            <div class="ib-value">Located in the hallway — adjust to your preferred temperature</div>
+          </div>
+        </div>
+        <div class="ib-divider"></div>
+        <div class="ib-row">
+          <span class="ib-icon">🚿</span>
+          <div>
+            <div class="ib-label">Hot water boiler</div>
+            <div class="ib-value">Located in the entrance cupboard</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Appliances -->
+    <p class="section-heading">Appliances</p>
+    <div class="content-pad">
+      <div class="info-block">
+        <div class="ib-row">
+          <span class="ib-icon">🍳</span>
+          <div>
+            <div class="ib-label">Oven &amp; Hob</div>
+            <div class="ib-value">Turn on the wall switch first before using the oven</div>
+          </div>
+        </div>
+        <div class="ib-divider"></div>
+        <div class="ib-row">
+          <span class="ib-icon">👕</span>
+          <div>
+            <div class="ib-label">Washing machine</div>
+            <div class="ib-value">Located in the cupboard near the entrance</div>
+          </div>
+        </div>
+        <div class="ib-divider"></div>
+        <div class="ib-row">
+          <span class="ib-icon">🌀</span>
+          <div>
+            <div class="ib-label">Dryer</div>
+            <div class="ib-value">Next to the oven and stove</div>
+          </div>
+        </div>
+        <div class="ib-divider"></div>
+        <div class="ib-row">
+          <span class="ib-icon">🛋️</span>
+          <div>
+            <div class="ib-label">Sofa bed</div>
+            <div class="ib-value">Remove the cushions, then lift the mattress using the handle underneath</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bins -->
+    <p class="section-heading">Bins &amp; Rubbish</p>
+    <div class="content-pad">
+      <div class="info-block">
+        <div class="ib-row">
+          <span class="ib-icon">🗑️</span>
+          <div>
+            <div class="ib-label">Rubbish disposal</div>
+            <div class="ib-value">Bins are located by the lamppost outside — please use them for all rubbish</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parking -->
+    <p class="section-heading">Parking</p>
+    <div class="content-pad">
+      <div class="info-block">
+        <div class="ib-row">
+          <span class="ib-icon">🚗</span>
+          <div>
+            <div class="ib-label">Paid parking hours</div>
+            <div class="ib-value">Mon–Fri: 8:30 AM – 6:30 PM</div>
+            <div class="ib-value" style="margin-top:4px;">Saturday: 8:30 AM – 5:30 PM</div>
+          </div>
+        </div>
+        <div class="ib-divider"></div>
+        <div class="ib-row">
+          <span class="ib-icon">✅</span>
+          <div>
+            <div class="ib-label">Free parking</div>
+            <div class="ib-value">Mon–Fri after 6:30 PM, all day Sunday</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- House Rules -->
+    <p class="section-heading">House Rules</p>
+    <div class="content-pad">
+      <div class="rules-list">
+        <div class="rule-item">
+          <span class="rule-icon">🚭</span>
+          <div><strong>No smoking</strong> inside the property. Violations will result in a deposit charge.</div>
+        </div>
+        <div class="rule-item">
+          <span class="rule-icon">🚫</span>
+          <div><strong>No parties or gatherings.</strong> Strictly prohibited and will result in a deposit charge and fine.</div>
+        </div>
+        <div class="rule-item">
+          <span class="rule-icon">🤫</span>
+          <div><strong>Quiet hours: 11 PM – 7 AM.</strong> Please keep noise levels down and respect your neighbours.</div>
+        </div>
+        <div class="rule-item">
+          <span class="rule-icon">🐾</span>
+          <div><strong>No pets</strong> unless previously agreed with the host.</div>
+        </div>
+        <div class="rule-item">
+          <span class="rule-icon">⚖️</span>
+          <div><strong>No illegal activities.</strong> Will result in immediate eviction and deposit charge.</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════ LOCAL AREA ═══════════ -->
+  <section class="tab-panel" data-tab="local">
+
+    <!-- Directions to property -->
+    <div class="content-pad" style="padding-top: 16px;">
+      <a class="maps-button" href="https://www.google.com/maps/search/71a+Oakley+Square+London+NW1+1NH" target="_blank" rel="noopener">
+        <span class="map-icon">📍</span>
+        <span>Get Directions</span>
+      </a>
+    </div>
+
+    <!-- Transport -->
+    <p class="section-heading">Getting Around</p>
+    <div class="content-pad">
+      <div class="info-block">
+        <div class="ib-row">
+          <span class="ib-icon">🚇</span>
+          <div>
+            <div class="ib-label">Nearest tube</div>
+            <div class="ib-value">Mornington Crescent <span class="ib-tag">3 min walk</span></div>
+            <div class="ib-value" style="margin-top:4px;">Euston <span class="ib-tag">10 min walk</span></div>
+            <div class="ib-value" style="margin-top:4px;">King's Cross St Pancras <span class="ib-tag">15 min walk</span></div>
+          </div>
+        </div>
+        <div class="ib-divider"></div>
+        <div class="ib-row">
+          <span class="ib-icon">🚌</span>
+          <div>
+            <div class="ib-label">Nearest bus stop</div>
+            <div class="ib-value">Aldenham Street</div>
+            <div class="ib-sub">Buses: 1, 253, N5, N20, N253</div>
+          </div>
+        </div>
+        <div class="ib-divider"></div>
+        <div class="ib-row">
+          <span class="ib-icon">🚕</span>
+          <div>
+            <div class="ib-label">Taxis</div>
+            <div class="ib-value">Uber, Bolt &amp; Black Cabs available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Restaurants -->
+    <p class="section-heading">Recommended Restaurants</p>
+    <div class="content-pad">
+      <div class="recs-list">
+        <div class="rec-item">
+          <div class="rec-emoji">🥩</div>
+          <div>
+            <div class="rec-name">Flat Iron</div>
+            <div class="rec-desc">Quality steaks and a relaxed atmosphere</div>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-emoji">🍜</div>
+          <div>
+            <div class="rec-name">Rosa's Thai</div>
+            <div class="rec-desc">Authentic Thai dishes with a modern twist</div>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-emoji">🍕</div>
+          <div>
+            <div class="rec-name">Franco Manca</div>
+            <div class="rec-desc">Authentic sourdough pizza</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Things to do -->
+    <p class="section-heading">Things to Do Nearby</p>
+    <div class="content-pad">
+      <div class="recs-list">
+        <div class="rec-item">
+          <div class="rec-emoji">🌳</div>
+          <div><div class="rec-name">Regent's Park</div><div class="rec-desc">Beautiful royal park — great for morning runs and picnics</div></div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-emoji">🕰️</div>
+          <div><div class="rec-name">Big Ben</div><div class="rec-desc">London's most famous landmark</div></div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-emoji">🎡</div>
+          <div><div class="rec-name">London Eye</div><div class="rec-desc">Iconic riverside observation wheel</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emergencies -->
+    <p class="section-heading">Emergencies</p>
+    <div class="content-pad">
+      <div class="info-block">
+        <div class="ib-row">
+          <span class="ib-icon">🚨</span>
+          <div><div class="ib-label">Emergency services</div><div class="ib-value">Call <strong>999</strong> — Police, Ambulance, Fire</div></div>
+        </div>
+        <div class="ib-divider"></div>
+        <div class="ib-row">
+          <span class="ib-icon">🏥</span>
+          <div><div class="ib-label">Closest hospital</div><div class="ib-value">University College Hospital</div><div class="ib-sub">NW1 2BU</div></div>
+        </div>
+        <div class="ib-divider"></div>
+        <div class="ib-row">
+          <span class="ib-icon">💊</span>
+          <div><div class="ib-label">Closest pharmacy</div><div class="ib-value">JP Pharmacy</div><div class="ib-sub">NW1 7JR</div></div>
+        </div>
+        <div class="ib-divider"></div>
+        <div class="ib-row">
+          <span class="ib-icon">🚗</span>
+          <div><div class="ib-label">Roadside assistance</div><div class="ib-value">AA: 0344 209 0754</div></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</div><!-- /app-body -->
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-btn" data-tab="welcome">
+    <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></span>
+    <span class="nav-label">Welcome</span>
+  </button>
+  <button class="nav-btn" data-tab="checkin">
+    <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6M15.5 7.5l3 3M18 2l3 3"/></svg></span>
+    <span class="nav-label">Check-in</span>
+  </button>
+  <button class="nav-btn" data-tab="house">
+    <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+    <span class="nav-label">House</span>
+  </button>
+  <button class="nav-btn" data-tab="local">
+    <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+    <span class="nav-label">Local</span>
+  </button>
+</nav>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

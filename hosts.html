@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abodess Hosts — Meet Our Team</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/logo5.jpg">
+  <style>
+    /* Bold editorial/gallery aesthetic for host profiles */
+
+    :root {
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background: var(--white);
+      font-family: 'Lora', serif;
+      color: var(--black);
+    }
+
+    /* HEADER */
+    header {
+      padding: var(--space-2xl) var(--space-lg);
+      background: linear-gradient(135deg, rgba(0,153,221,0.05) 0%, rgba(0,153,221,0.02) 100%);
+      border-bottom: 2px solid var(--teal-light);
+      text-align: center;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: var(--space-lg);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--teal-dark);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: var(--space-sm);
+      background: linear-gradient(135deg, var(--black) 0%, var(--teal-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-subtitle {
+      font-size: 16px;
+      color: #888;
+      margin-bottom: var(--space-md);
+    }
+
+    .header-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal) 0%, #33aaee 100%);
+      margin: var(--space-lg) auto;
+      border-radius: 2px;
+    }
+
+    /* MAIN CONTAINER */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-2xl) var(--space-lg);
+    }
+
+    /* INTRO TEXT */
+    .intro-text {
+      max-width: 600px;
+      margin: 0 auto var(--space-2xl);
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #666;
+    }
+
+    /* HOSTS GRID */
+    .hosts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-2xl);
+      margin-bottom: var(--space-2xl);
+    }
+
+    /* HOST CARD */
+    .host-card {
+      position: relative;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 1px solid var(--teal-light);
+    }
+
+    .host-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(0, 153, 221, 0.2);
+      border-color: var(--teal);
+    }
+
+    .host-avatar-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, var(--teal-light) 0%, rgba(0,153,221,0.05) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .host-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal) 0%, #33aaee 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 800;
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(0, 153, 221, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .avatar-decoration {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 2px solid rgba(0, 153, 221, 0.2);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .host-info {
+      padding: var(--space-xl);
+    }
+
+    .host-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+      color: var(--black);
+    }
+
+    .host-role {
+      font-size: 12px;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+    }
+
+    .host-bio {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: var(--space-md);
+    }
+
+    .host-properties {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: var(--space-md);
+      font-style: italic;
+    }
+
+    .host-contact {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--teal-light);
+    }
+
+    .contact-item {
+      display: flex;
+      gap: var(--space-md);
+      font-size: 13px;
+    }
+
+    .contact-icon {
+      color: var(--teal);
+      font-size: 16px;
+      min-width: 20px;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .contact-value {
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    /* CONTACT BUTTON */
+    .btn-message {
+      width: 100%;
+      padding: var(--space-md);
+      margin-top: var(--space-md);
+      background: linear-gradient(135deg, var(--teal) 0%, #33aaee 100%);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 153, 221, 0.2);
+    }
+
+    .btn-message:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 153, 221, 0.4);
+    }
+
+    /* STATS SECTION */
+    .stats-section {
+      background: linear-gradient(135deg, var(--teal-light) 0%, rgba(0,153,221,0.1) 100%);
+      padding: var(--space-2xl);
+      border-radius: 12px;
+      margin-bottom: var(--space-2xl);
+      border: 1px solid var(--teal-light);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--space-lg);
+      text-align: center;
+    }
+
+    .stat {
+      padding: var(--space-lg);
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--teal-dark);
+      margin-bottom: var(--space-sm);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    /* ANIMATION */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .host-card {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .host-card:nth-child(1) { animation-delay: 0.1s; }
+    .host-card:nth-child(2) { animation-delay: 0.2s; }
+    .host-card:nth-child(3) { animation-delay: 0.3s; }
+    .host-card:nth-child(4) { animation-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      .hosts-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+
+      main {
+        padding: var(--space-lg) var(--space-md);
+      }
+
+      header {
+        padding: var(--space-lg) var(--space-md);
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      .host-name {
+        font-size: 20px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-section {
+        padding: var(--space-lg);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="back-link">← Back to Guides</a>
+    <h1>Our Hosts</h1>
+    <div class="header-divider"></div>
+    <p class="header-subtitle">Meet the people behind Abodess properties</p>
+  </header>
+
+  <main>
+
+    <p class="intro-text">
+      Our dedicated hosts are committed to providing exceptional guest experiences. Whether you need assistance, have questions about your stay, or simply want to connect, our team is here to help.
+    </p>
+
+    <!-- QUICK STATS -->
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-value">7</div>
+          <div class="stat-label">Properties</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">4.8★</div>
+          <div class="stat-label">Avg Rating</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">24/7</div>
+          <div class="stat-label">Support</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Response Rate</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOSTS GALLERY -->
+    <div class="hosts-grid">
+
+      <!-- Host 1: Adam -->
+      <div class="host-card">
+        <div class="host-avatar-wrapper">
+          <div class="avatar-decoration"></div>
+          <div class="host-avatar">A</div>
+        </div>
+        <div class="host-info">
+          <div class="host-role">Property Manager</div>
+          <div class="host-name">Adam</div>
+          <p class="host-bio">Dedicated to creating welcoming spaces. Adam manages multiple Chelsea properties with meticulous attention to detail.</p>
+          <p class="host-properties">📍 30 Gunter Grove</p>
+          <div class="host-contact">
+            <div class="contact-item">
+              <span class="contact-icon">📱</span>
+              <div class="contact-info">
+                <div class="contact-label">WhatsApp</div>
+                <div class="contact-value">0203 488 4259</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">☎️</span>
+              <div class="contact-info">
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">0737 913 0361</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-message" onclick="window.open('https://wa.me/442034884259')">Message on WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- Host 2: Sarah -->
+      <div class="host-card">
+        <div class="host-avatar-wrapper">
+          <div class="avatar-decoration"></div>
+          <div class="host-avatar">S</div>
+        </div>
+        <div class="host-info">
+          <div class="host-role">Guest Relations</div>
+          <div class="host-name">Sarah</div>
+          <p class="host-bio">Your go-to contact for bookings and inquiries. Sarah ensures every guest has an unforgettable experience from day one.</p>
+          <p class="host-properties">📍 Lupin Point (Flats 21 & 32)</p>
+          <div class="host-contact">
+            <div class="contact-item">
+              <span class="contact-icon">📧</span>
+              <div class="contact-info">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">sarah@abodess.co.uk</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">☎️</span>
+              <div class="contact-info">
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">0208 123 4567</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-message" onclick="window.open('mailto:sarah@abodess.co.uk')">Send Email</button>
+        </div>
+      </div>
+
+      <!-- Host 3: James -->
+      <div class="host-card">
+        <div class="host-avatar-wrapper">
+          <div class="avatar-decoration"></div>
+          <div class="host-avatar">J</div>
+        </div>
+        <div class="host-info">
+          <div class="host-role">Property Specialist</div>
+          <div class="host-name">James</div>
+          <p class="host-bio">Specialist in premium properties. James oversees maintenance, upgrades, and ensures all properties meet Abodess standards.</p>
+          <p class="host-properties">📍 Oakley Square & Stoke Place</p>
+          <div class="host-contact">
+            <div class="contact-item">
+              <span class="contact-icon">📱</span>
+              <div class="contact-info">
+                <div class="contact-label">WhatsApp</div>
+                <div class="contact-value">0746 555 2837</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">☎️</span>
+              <div class="contact-info">
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">0203 555 1234</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-message" onclick="window.open('https://wa.me/442465552837')">Message on WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- Host 4: Elena -->
+      <div class="host-card">
+        <div class="host-avatar-wrapper">
+          <div class="avatar-decoration"></div>
+          <div class="host-avatar">E</div>
+        </div>
+        <div class="host-info">
+          <div class="host-role">Emergency Support</div>
+          <div class="host-name">Elena</div>
+          <p class="host-bio">Available 24/7 for urgent situations. Elena is trained in crisis management and ensures guest safety above all else.</p>
+          <p class="host-properties">📍 All Properties</p>
+          <div class="host-contact">
+            <div class="contact-item">
+              <span class="contact-icon">☎️</span>
+              <div class="contact-info">
+                <div class="contact-label">Emergency Hotline</div>
+                <div class="contact-value">0203 999 1111</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🚨</span>
+              <div class="contact-info">
+                <div class="contact-label">Response Time</div>
+                <div class="contact-value">&lt; 15 minutes</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-message" onclick="alert('Emergency: Call 0203 999 1111 immediately')">Call Emergency Hotline</button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer style="text-align:center; padding:32px 24px; color:#999; font-size:12px; border-top:1px solid var(--teal-light);">
+    © 2026 Abodess Property Management. Connect with our team anytime.
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abodess — Admin Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/logo5.jpg">
+  <style>
+    /* Admin-specific design: refined luxury data visualization */
+
+    :root {
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background: linear-gradient(135deg, #f8fbfd 0%, #f0f7fb 100%);
+      font-family: 'Lora', serif;
+      color: var(--black);
+    }
+
+    .admin-container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+    }
+
+    /* SIDEBAR */
+    .admin-sidebar {
+      background: var(--white);
+      border-right: 2px solid var(--teal-light);
+      padding: var(--space-xl);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 153, 221, 0.08);
+      height: fit-content;
+      position: sticky;
+      top: var(--space-lg);
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-2xl);
+      padding-bottom: var(--space-xl);
+      border-bottom: 1px solid var(--teal-light);
+    }
+
+    .sidebar-logo img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .sidebar-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .nav-item {
+      padding: var(--space-md) var(--space-lg);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-left: 3px solid transparent;
+      color: #666;
+    }
+
+    .nav-item:hover {
+      background: var(--teal-light);
+      color: var(--teal);
+      border-left-color: var(--teal);
+      transform: translateX(4px);
+    }
+
+    .nav-item.active {
+      background: linear-gradient(135deg, var(--teal-light) 0%, rgba(0,153,221,0.1) 100%);
+      color: var(--teal);
+      border-left-color: var(--teal);
+      font-weight: 600;
+    }
+
+    /* HEADER */
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-2xl);
+      padding-bottom: var(--space-xl);
+      border-bottom: 1px solid var(--teal-light);
+    }
+
+    .header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--black) 0%, var(--teal-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-subtitle {
+      font-size: 13px;
+      color: #888;
+      margin-top: var(--space-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal) 0%, #33aaee 100%);
+      color: var(--white);
+      border: none;
+      padding: var(--space-md) var(--space-lg);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 153, 221, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 153, 221, 0.4);
+    }
+
+    /* MAIN CONTENT */
+    .admin-main {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xl);
+    }
+
+    /* METRICS GRID */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .metric-card {
+      background: var(--white);
+      padding: var(--space-xl);
+      border-radius: 12px;
+      border: 1px solid var(--teal-light);
+      border-left: 4px solid var(--teal);
+      box-shadow: 0 2px 8px rgba(0, 153, 221, 0.1);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(0,153,221,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 153, 221, 0.2);
+      border-left-color: #33aaee;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      margin-bottom: var(--space-md);
+    }
+
+    .metric-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--space-sm);
+    }
+
+    .metric-change {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .metric-change.positive {
+      color: #4caf50;
+    }
+
+    .metric-change.negative {
+      color: #ff6b6b;
+    }
+
+    /* PROPERTIES TABLE */
+    .properties-section {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--teal-light);
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 153, 221, 0.08);
+    }
+
+    .section-header {
+      padding: var(--space-xl);
+      background: linear-gradient(135deg, rgba(0,153,221,0.05) 0%, rgba(0,153,221,0.02) 100%);
+      border-bottom: 1px solid var(--teal-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: #999;
+      margin-top: var(--space-xs);
+    }
+
+    .properties-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table-header {
+      background: linear-gradient(90deg, rgba(0,153,221,0.03) 0%, rgba(0,153,221,0.01) 100%);
+      border-bottom: 2px solid var(--teal-light);
+    }
+
+    .table-header th {
+      padding: var(--space-lg);
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .table-row {
+      border-bottom: 1px solid var(--teal-light);
+      transition: all 0.2s ease;
+    }
+
+    .table-row:hover {
+      background: var(--teal-light);
+    }
+
+    .table-row td {
+      padding: var(--space-lg);
+      font-size: 14px;
+    }
+
+    .prop-name {
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    .prop-status {
+      display: inline-block;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .status-occupied {
+      background: linear-gradient(135deg, var(--teal-light) 0%, rgba(0,153,221,0.1) 100%);
+      color: var(--teal-dark);
+    }
+
+    .status-vacant {
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      color: #2e7d32;
+    }
+
+    .status-maintenance {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      color: #e65100;
+    }
+
+    .action-btn {
+      background: none;
+      border: none;
+      color: var(--teal);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      padding: var(--space-md);
+    }
+
+    .action-btn:hover {
+      color: var(--teal-dark);
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    .admin-footer {
+      text-align: center;
+      padding: var(--space-xl);
+      color: #999;
+      font-size: 12px;
+      border-top: 1px solid var(--teal-light);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .admin-container {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-sidebar {
+        position: static;
+        border-right: none;
+        border-bottom: 2px solid var(--teal-light);
+        padding: var(--space-lg);
+      }
+
+      .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .nav-item {
+        flex: 1 1 auto;
+        min-width: 120px;
+      }
+
+      .header-title {
+        font-size: 24px;
+      }
+
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .admin-container {
+        padding: var(--space-md);
+        gap: var(--space-md);
+      }
+
+      .header-title {
+        font-size: 20px;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-sidebar {
+        padding: var(--space-md);
+      }
+
+      .properties-table {
+        font-size: 12px;
+      }
+
+      .table-row td {
+        padding: var(--space-md);
+      }
+
+      .header-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-primary {
+        width: 100%;
+      }
+    }
+
+    /* ANIMATION */
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .metric-card {
+      animation: slideInUp 0.6s ease forwards;
+    }
+
+    .metric-card:nth-child(1) { animation-delay: 0.1s; }
+    .metric-card:nth-child(2) { animation-delay: 0.2s; }
+    .metric-card:nth-child(3) { animation-delay: 0.3s; }
+    .metric-card:nth-child(4) { animation-delay: 0.4s; }
+
+  </style>
+</head>
+<body>
+
+  <div class="admin-container">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">
+        <img src="assets/logo5.jpg" alt="Abodess">
+        <div class="sidebar-logo-text">Admin</div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-item active">Dashboard</div>
+        <div class="nav-item">Properties</div>
+        <div class="nav-item">Bookings</div>
+        <div class="nav-item">Hosts</div>
+        <div class="nav-item">Reports</div>
+        <div class="nav-item">Settings</div>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+
+      <!-- HEADER -->
+      <div class="admin-header">
+        <div>
+          <div class="header-title">Dashboard</div>
+          <div class="header-subtitle">Property Management Overview</div>
+        </div>
+        <div class="header-actions">
+          <button class="btn-primary">+ New Property</button>
+        </div>
+      </div>
+
+      <!-- METRICS -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Total Properties</div>
+          <div class="metric-value">7</div>
+          <div class="metric-change">All online</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Occupancy Rate</div>
+          <div class="metric-value">84%</div>
+          <div class="metric-change positive">↑ 12% from last month</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Active Bookings</div>
+          <div class="metric-value">14</div>
+          <div class="metric-change">This week</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Avg. Rating</div>
+          <div class="metric-value">4.8</div>
+          <div class="metric-change">From 42 reviews</div>
+        </div>
+      </div>
+
+      <!-- PROPERTIES TABLE -->
+      <div class="properties-section">
+        <div class="section-header">
+          <div>
+            <div class="section-title">All Properties</div>
+            <div class="section-subtitle">Manage and monitor your portfolio</div>
+          </div>
+        </div>
+        <table class="properties-table">
+          <thead class="table-header">
+            <tr>
+              <th>Property</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Next Booking</th>
+              <th>Rating</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-row">
+              <td><span class="prop-name">30 Gunter Grove</span></td>
+              <td>Chelsea, SW10</td>
+              <td><span class="prop-status status-occupied">Occupied</span></td>
+              <td>In 2 days</td>
+              <td>4.9 ⭐</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr class="table-row">
+              <td><span class="prop-name">Flat 21 Lupin Point</span></td>
+              <td>Abbey Street, SE1</td>
+              <td><span class="prop-status status-vacant">Vacant</span></td>
+              <td>In 5 days</td>
+              <td>4.7 ⭐</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr class="table-row">
+              <td><span class="prop-name">Flat 32 Lupin Point</span></td>
+              <td>Abbey Street, SE1</td>
+              <td><span class="prop-status status-occupied">Occupied</span></td>
+              <td>In 1 day</td>
+              <td>4.8 ⭐</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr class="table-row">
+              <td><span class="prop-name">71 Oakley Square — Ground</span></td>
+              <td>London, NW1</td>
+              <td><span class="prop-status status-maintenance">Maintenance</span></td>
+              <td>—</td>
+              <td>4.9 ⭐</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr class="table-row">
+              <td><span class="prop-name">71a Oakley Square — Basement</span></td>
+              <td>London, NW1</td>
+              <td><span class="prop-status status-occupied">Occupied</span></td>
+              <td>In 3 days</td>
+              <td>4.6 ⭐</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr class="table-row">
+              <td><span class="prop-name">Stoke Place — Ground Floor</span></td>
+              <td>London, NW10</td>
+              <td><span class="prop-status status-vacant">Vacant</span></td>
+              <td>In 4 days</td>
+              <td>4.8 ⭐</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr class="table-row">
+              <td><span class="prop-name">Stoke Place — First Floor</span></td>
+              <td>London, NW10</td>
+              <td><span class="prop-status status-occupied">Occupied</span></td>
+              <td>In 6 days</td>
+              <td>4.9 ⭐</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="admin-footer">
+        © 2026 Abodess Property Management. Designed with precision.
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
